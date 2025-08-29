@@ -5,7 +5,6 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ExternalLink, Users, CheckCircle, Target, Zap } from "lucide-react"
 import type { Task } from "@/data/tasks"
 import { cn } from "@/lib/utils"
-import { motion } from "framer-motion"
 import { useState } from "react"
 
 interface TaskCardProps {
@@ -18,223 +17,129 @@ export function TaskCard({ task, className, index = 0 }: TaskCardProps) {
   const [isHovered, setIsHovered] = useState(false)
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      transition={{
-        duration: 0.5,
-        delay: index * 0.1,
-        type: "spring",
-        stiffness: 100,
-      }}
-      whileHover={{
-        scale: 1.02,
-        rotateX: 5,
-        rotateY: 5,
-      }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      className="perspective-1000"
+    <div
+      className="animate-fade-in-up perspective-1000"
+      style={{ animationDelay: `${index * 0.1}s` }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       <Card
         className={cn(
-          "relative overflow-hidden group transition-all duration-500 ease-out",
+          "relative overflow-hidden group transition-all duration-500 ease-out h-full",
           "hover:shadow-2xl hover:shadow-primary/20 border-2 border-transparent",
-          "hover:border-primary/20 glass",
+          "hover:border-primary/20 glass hover:scale-102 hover:-translate-y-1",
           className,
         )}
       >
-        <motion.div
-          className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 opacity-0"
-          animate={{ opacity: isHovered ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
+        <div
+          className={cn(
+            "absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 transition-opacity duration-300",
+            isHovered ? "opacity-100" : "opacity-0",
+          )}
         />
 
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          {[...Array(3)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-primary/30 rounded-full"
-              animate={{
-                x: [0, 100, 0],
-                y: [0, -50, 0],
-                opacity: [0, 1, 0],
-              }}
-              transition={{
-                duration: 3,
-                delay: i * 0.5,
-                repeat: Number.POSITIVE_INFINITY,
-                repeatDelay: 2,
-              }}
-              style={{
-                left: `${20 + i * 30}%`,
-                top: `${50 + i * 10}%`,
-              }}
-            />
-          ))}
+          <div className="absolute top-4 right-4 w-1 h-1 bg-primary/30 rounded-full animate-float-particle" />
+          <div className="absolute top-8 right-8 w-1 h-1 bg-primary/30 rounded-full animate-float-particle-delayed" />
+          <div className="absolute top-12 right-12 w-1 h-1 bg-primary/30 rounded-full animate-float-particle-delayed-2" />
         </div>
 
         <CardHeader className="relative z-10">
           <div className="flex items-start justify-between gap-4">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
-            >
+            <div className="flex-1">
               <CardTitle className="text-lg leading-tight text-balance bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text">
                 {task.title}
               </CardTitle>
-            </motion.div>
+            </div>
           </div>
-          {task.goal && (
-            <motion.p
-              className="text-sm text-muted-foreground text-pretty"
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 + 0.4 }}
-            >
-              {task.goal}
-            </motion.p>
-          )}
+          {task.goal && <p className="text-sm text-muted-foreground text-pretty mt-2">{task.goal}</p>}
         </CardHeader>
 
         <CardContent className="space-y-4 relative z-10">
           {task.audience && (
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 + 0.5 }}
-              className="group/section"
-            >
-              <h4 className="text-sm font-medium mb-1 flex items-center gap-2">
-                <Users className="w-3 h-3 text-primary" />
-                Audience
+            <div className="group/section">
+              <h4 className="text-sm font-medium mb-2 flex items-center gap-2">
+                <Users className="w-4 h-4 text-primary flex-shrink-0" />
+                <span>Audience</span>
               </h4>
-              <p className="text-sm text-muted-foreground group-hover/section:text-foreground transition-colors duration-200">
+              <p className="text-sm text-muted-foreground group-hover/section:text-foreground transition-colors duration-200 ml-6">
                 {task.audience}
               </p>
-            </motion.div>
+            </div>
           )}
 
           {task.deliverables && task.deliverables.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 + 0.6 }}
-            >
+            <div>
               <h4 className="text-sm font-medium mb-2 flex items-center gap-2">
-                <CheckCircle className="w-3 h-3 text-secondary" />
-                Deliverables
+                <CheckCircle className="w-4 h-4 text-secondary flex-shrink-0" />
+                <span>Deliverables</span>
               </h4>
-              <ul className="text-sm text-muted-foreground space-y-1">
+              <ul className="text-sm text-muted-foreground space-y-2 ml-6">
                 {task.deliverables.map((deliverable, deliverableIndex) => (
-                  <motion.li
+                  <li
                     key={deliverableIndex}
-                    className="flex items-start gap-2 group/item"
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      duration: 0.3,
-                      delay: index * 0.1 + 0.7 + deliverableIndex * 0.05,
-                    }}
-                    whileHover={{ x: 5, scale: 1.02 }}
+                    className="flex items-start gap-2 group/item hover:translate-x-1 transition-transform duration-200"
                   >
-                    <motion.span
-                      className="text-primary mt-1 transition-all duration-200"
-                      whileHover={{ scale: 1.5, rotate: 180 }}
-                    >
-                      •
-                    </motion.span>
-                    <span className="group-hover/item:text-foreground transition-colors duration-200">
+                    <span className="text-primary mt-1 transition-all duration-200 hover:scale-150">•</span>
+                    <span className="group-hover/item:text-foreground transition-colors duration-200 flex-1">
                       {deliverable}
                     </span>
-                  </motion.li>
+                  </li>
                 ))}
               </ul>
-            </motion.div>
+            </div>
           )}
 
           {task.successMetric && (
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 + 0.8 }}
-              className="group/section"
-            >
-              <h4 className="text-sm font-medium mb-1 flex items-center gap-2">
-                <Target className="w-3 h-3 text-accent" />
-                Success Metric
+            <div className="group/section">
+              <h4 className="text-sm font-medium mb-2 flex items-center gap-2">
+                <Target className="w-4 h-4 text-accent flex-shrink-0" />
+                <span>Success Metric</span>
               </h4>
-              <p className="text-sm text-muted-foreground group-hover/section:text-foreground transition-colors duration-200">
+              <p className="text-sm text-muted-foreground group-hover/section:text-foreground transition-colors duration-200 ml-6">
                 {task.successMetric}
               </p>
-            </motion.div>
+            </div>
           )}
 
           {task.steps && task.steps.length > 0 && (
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 + 0.9 }}
-            >
+            <div>
               <h4 className="text-sm font-medium mb-2 flex items-center gap-2">
-                <Zap className="w-3 h-3 text-primary" />
-                Steps
+                <Zap className="w-4 h-4 text-primary flex-shrink-0" />
+                <span>Steps</span>
               </h4>
-              <ol className="text-sm text-muted-foreground space-y-1">
+              <ol className="text-sm text-muted-foreground space-y-2 ml-6">
                 {task.steps.map((step, stepIndex) => (
-                  <motion.li
+                  <li
                     key={stepIndex}
-                    className="flex items-start gap-2 group/item"
-                    initial={{ opacity: 0, x: -10 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{
-                      duration: 0.3,
-                      delay: index * 0.1 + 1.0 + stepIndex * 0.05,
-                    }}
-                    whileHover={{ x: 5, scale: 1.02 }}
+                    className="flex items-start gap-3 group/item hover:translate-x-1 transition-transform duration-200"
                   >
-                    <motion.span
-                      className="text-primary font-medium mt-0.5 text-xs transition-all duration-200 bg-primary/10 rounded-full w-5 h-5 flex items-center justify-center"
-                      whileHover={{ scale: 1.2, rotate: 360 }}
-                      transition={{ duration: 0.3 }}
-                    >
+                    <span className="text-primary font-medium text-xs bg-primary/10 rounded-full w-6 h-6 flex items-center justify-center flex-shrink-0 mt-0.5 transition-all duration-200 hover:scale-110 hover:rotate-12">
                       {stepIndex + 1}
-                    </motion.span>
-                    <span className="group-hover/item:text-foreground transition-colors duration-200">{step}</span>
-                  </motion.li>
+                    </span>
+                    <span className="group-hover/item:text-foreground transition-colors duration-200 flex-1">
+                      {step}
+                    </span>
+                  </li>
                 ))}
               </ol>
-            </motion.div>
+            </div>
           )}
 
           {task.ctas && task.ctas.length > 0 && (
-            <motion.div
-              className="pt-2"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: index * 0.1 + 1.1 }}
-            >
+            <div className="pt-2">
               <div className="flex flex-wrap gap-2">
                 {task.ctas.map((cta, ctaIndex) => (
-                  <motion.div
+                  <div
                     key={ctaIndex}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{
-                      duration: 0.3,
-                      delay: index * 0.1 + 1.2 + ctaIndex * 0.1,
-                      type: "spring",
-                      stiffness: 200,
-                    }}
-                    whileHover={{ scale: 1.05, y: -2 }}
-                    whileTap={{ scale: 0.95 }}
+                    className="animate-fade-in-scale"
+                    style={{ animationDelay: `${(index * 0.1) + 1.2 + ctaIndex * 0.1}s` }}
                   >
                     <Button
                       variant="outline"
                       size="sm"
                       asChild
-                      className="h-8 bg-transparent transition-all duration-300 ease-out hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 group/button"
+                      className="h-8 bg-transparent transition-all duration-300 ease-out hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 hover:scale-105 hover:-translate-y-0.5 group/button"
                     >
                       <a
                         href={cta.href}
@@ -245,43 +150,30 @@ export function TaskCard({ task, className, index = 0 }: TaskCardProps) {
                         <span className="group-hover/button:text-primary transition-colors duration-200">
                           {cta.label}
                         </span>
-                        <motion.div whileHover={{ rotate: 45, scale: 1.2 }} transition={{ duration: 0.2 }}>
-                          <ExternalLink className="w-3 h-3 group-hover/button:text-primary transition-colors duration-200" />
-                        </motion.div>
+                        <ExternalLink className="w-3 h-3 group-hover/button:text-primary transition-all duration-200 group-hover/button:rotate-45 group-hover/button:scale-110" />
                       </a>
                     </Button>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
           )}
 
-          <motion.div
-            className="flex items-center gap-2 pt-2 text-xs text-muted-foreground"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4, delay: index * 0.1 + 1.3 }}
-          >
+          <div className="flex items-center gap-2 pt-2 text-xs text-muted-foreground">
             {task.week && (
-              <motion.span
-                className="bg-primary/10 px-2 py-1 rounded-full"
-                whileHover={{ scale: 1.1, backgroundColor: "rgba(34, 68, 174, 0.2)" }}
-              >
+              <span className="bg-primary/10 px-2 py-1 rounded-full hover:scale-110 hover:bg-primary/20 transition-all duration-200">
                 Week {task.week}
-              </motion.span>
+              </span>
             )}
             {task.category && task.week && <span>•</span>}
             {task.category && (
-              <motion.span
-                className="bg-secondary/10 px-2 py-1 rounded-full"
-                whileHover={{ scale: 1.1, backgroundColor: "rgba(88, 134, 184, 0.2)" }}
-              >
+              <span className="bg-secondary/10 px-2 py-1 rounded-full hover:scale-110 hover:bg-secondary/20 transition-all duration-200">
                 {task.category}
-              </motion.span>
+              </span>
             )}
-          </motion.div>
+          </div>
         </CardContent>
       </Card>
-    </motion.div>
+    </div>
   )
 }
