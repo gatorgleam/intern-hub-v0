@@ -103,40 +103,38 @@ export default function FAQPage() {
           description="Find answers to common questions about your internship and workflow."
         />
 
-        {/* Quick Help */}
-        <Card className="mb-8 bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20">
+        <Card className="mb-8 glass-refined animate-subtle-glow border-primary/20">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <span className="text-lg">❓</span>
+            <CardTitle className="flex items-center gap-2 text-lg">
+              <span className="text-xl">❓</span>
               Need More Help?
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-muted-foreground mb-4">
+            <p className="text-base text-muted-foreground mb-4">
               Can't find what you're looking for? The team is always available to help in Slack.
             </p>
-            <Button size="sm" asChild>
-              <a href={LINKS.slackInvite} target="_blank" rel="noopener noreferrer" className="gap-1.5">
+            <Button size="lg" asChild className="hover-gentle">
+              <a href={LINKS.slackInvite} target="_blank" rel="noopener noreferrer" className="gap-2">
                 Ask in Slack
-                <span className="text-xs">↗</span>
+                <span className="text-sm">↗</span>
               </a>
             </Button>
           </CardContent>
         </Card>
 
-        {/* FAQ Sections */}
-        <div className="space-y-8">
+        <div className="space-y-8 stagger-children">
           {faqs.map((section) => (
             <section key={section.category}>
-              <h2 className="text-xl font-semibold mb-4">{section.category}</h2>
+              <h2 className="text-2xl font-semibold mb-6 animate-text-shimmer">{section.category}</h2>
               <div className="space-y-4">
                 {section.questions.map((faq, index) => (
-                  <Card key={index} className="hover:shadow-sm transition-all duration-200 ease-out">
-                    <CardHeader className="pb-3">
-                      <CardTitle className="text-base">{faq.question}</CardTitle>
+                  <Card key={index} className="glass-refined hover-gentle transition-all duration-300 ease-out">
+                    <CardHeader className="pb-4">
+                      <CardTitle className="text-lg font-semibold">{faq.question}</CardTitle>
                     </CardHeader>
                     <CardContent>
-                      <p className="text-sm text-muted-foreground text-pretty">{faq.answer}</p>
+                      <p className="text-base text-muted-foreground text-pretty leading-relaxed">{faq.answer}</p>
                     </CardContent>
                   </Card>
                 ))}

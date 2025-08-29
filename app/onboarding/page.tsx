@@ -39,7 +39,7 @@ export default function OnboardingPage() {
     {} as Record<string, OnboardingStep[]>,
   )
 
-  // Get Week 1 tasks for the at-a-glance panel
+  // Get Week 1 tasks for the preview
   const week1Tasks = tasks.filter((task) => task.week === 1)
 
   const breadcrumbItems = [{ label: "Dashboard", href: "/" }, { label: "Onboarding" }]
@@ -70,27 +70,6 @@ export default function OnboardingPage() {
             </div>
           </div>
         </div>
-
-        <Card className="mb-8 bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <span className="text-lg">🕐</span>
-              At-a-Glance
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="text-center p-4 bg-background/50 rounded-xl">
-                <div className="text-2xl font-bold text-primary mb-1">{completedSteps.size}</div>
-                <div className="text-sm text-muted-foreground">Onboarding Steps Complete</div>
-              </div>
-              <div className="text-center p-4 bg-background/50 rounded-xl">
-                <div className="text-2xl font-bold text-secondary mb-1">{week1Tasks.length}</div>
-                <div className="text-sm text-muted-foreground">Week 1 Tasks Available</div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
 
         {/* Onboarding Sections */}
         <div className="space-y-12">

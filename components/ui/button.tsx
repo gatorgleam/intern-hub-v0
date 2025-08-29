@@ -31,7 +31,7 @@ function Button({
   const sizeClasses = buttonVariants.size[size] || buttonVariants.size.default
 
   const baseClasses =
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-center font-semibold transition-all duration-200 ease-out disabled:pointer-events-none disabled:opacity-50 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-center font-semibold transition-all duration-300 ease-out disabled:pointer-events-none disabled:opacity-50 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 text-center min-w-fit relative overflow-hidden group"
 
   return <button className={`${baseClasses} ${variantClasses} ${sizeClasses} ${className}`} {...props} />
 }

@@ -2,7 +2,6 @@
 
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/hero-section"
-import { PageHeader } from "@/components/page-header"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { tasks } from "@/data/tasks"
@@ -44,45 +43,8 @@ export default function DashboardPage() {
         description="Access resources, manage your internship journey, and get started with your assignments all in one place."
       />
 
-      <main className="max-w-6xl mx-auto container-padding py-16 stagger-children">
-        <div className="mb-12">
-          <PageHeader
-            title="Dashboard"
-            description="Welcome to your intern hub. Access everything you need to get started."
-            className="animate-text-shimmer"
-          />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {[
-            {
-              title: "Total Tasks",
-              value: week1Tasks.length,
-              subtitle: "Week 1 Tasks",
-            },
-            {
-              title: "Available Tasks",
-              value: week1Tasks.length,
-              subtitle: "Ready to Start",
-            },
-          ].map((stat, index) => (
-            <Card
-              key={stat.title}
-              className="hover-magnetism glass-advanced border-0 shadow-sm animate-liquid-glow relative overflow-hidden"
-            >
-              <div className="absolute top-2 right-2 w-2 h-2 bg-primary/30 rounded-full animate-particle-float" />
-              <CardHeader className="pb-3">
-                <CardTitle className="text-sm font-medium text-muted-foreground">{stat.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="text-3xl font-bold text-primary mb-1 animate-text-shimmer">{stat.value}</div>
-                <p className="text-sm text-muted-foreground">{stat.subtitle}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        <div className="relative my-16">
+      <main className="max-w-6xl mx-auto container-padding stagger-children">
+        <div className="relative my-8">
           <div className="absolute inset-0 flex items-center">
             <div className="w-full border-t border-gradient-to-r from-transparent via-primary/30 to-transparent animate-liquid-glow" />
           </div>
@@ -122,9 +84,11 @@ export default function DashboardPage() {
                   <Button
                     variant={action.variant}
                     asChild
-                    className="w-full text-lg font-semibold h-12 mt-auto pulse-ring hover-magnetism"
+                    className="w-full text-lg font-semibold h-14 mt-auto pulse-ring hover-magnetism min-w-full flex items-center justify-center"
                   >
-                    <Link href={action.href}>Get Started</Link>
+                    <Link href={action.href} className="flex items-center justify-center w-full">
+                      Get Started
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -150,9 +114,11 @@ export default function DashboardPage() {
               variant="outline"
               size="sm"
               asChild
-              className="bg-transparent text-base font-semibold min-w-[140px] hover-magnetism pulse-ring"
+              className="bg-transparent text-base font-semibold min-w-[140px] h-10 hover-magnetism pulse-ring flex items-center justify-center"
             >
-              <Link href="/tasks">View All Tasks</Link>
+              <Link href="/tasks" className="flex items-center justify-center">
+                View All Tasks
+              </Link>
             </Button>
           </div>
 
@@ -176,8 +142,14 @@ export default function DashboardPage() {
                   View all your weekly assignments organized by week. Each week contains carefully curated tasks to help
                   you learn and grow as a marketing intern.
                 </p>
-                <Button asChild className="text-lg font-semibold h-12 min-w-[160px] mt-6 pulse-ring hover-magnetism">
-                  <Link href="/tasks">Go to Tasks →</Link>
+                <Button
+                  asChild
+                  className="text-lg font-semibold h-14 min-w-[180px] mt-6 pulse-ring hover-magnetism flex items-center justify-center"
+                >
+                  <Link href="/tasks" className="flex items-center justify-center gap-2">
+                    Go to Tasks
+                    <span className="transition-transform group-hover:translate-x-1">→</span>
+                  </Link>
                 </Button>
               </div>
             </CardContent>

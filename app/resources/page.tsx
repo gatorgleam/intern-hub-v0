@@ -92,10 +92,15 @@ export default function ResourcesPage() {
                         <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
                           {resource.category}
                         </span>
-                        <Button size="sm" asChild>
-                          <a href={resource.href} target="_blank" rel="noopener noreferrer" className="gap-1.5">
+                        <Button size="sm" asChild className="min-w-[80px] h-9 font-semibold">
+                          <a
+                            href={resource.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center gap-1.5"
+                          >
                             Open
-                            <span className="text-xs">↗</span>
+                            <span className="text-xs transition-transform group-hover:translate-x-0.5">↗</span>
                           </a>
                         </Button>
                       </div>
@@ -123,10 +128,20 @@ export default function ResourcesPage() {
                       <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
                         {resource.category}
                       </span>
-                      <Button variant="outline" size="sm" asChild>
-                        <a href={resource.href} target="_blank" rel="noopener noreferrer" className="gap-1.5">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        asChild
+                        className="min-w-[80px] h-9 font-semibold bg-transparent"
+                      >
+                        <a
+                          href={resource.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-1.5"
+                        >
                           Visit
-                          <span className="text-xs">↗</span>
+                          <span className="text-xs transition-transform group-hover:translate-x-0.5">↗</span>
                         </a>
                       </Button>
                     </div>
