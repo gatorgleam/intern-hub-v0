@@ -32,11 +32,11 @@ export function ChecklistItem({ id, children, defaultChecked = false, onToggle, 
   }
 
   return (
-    <div className={cn("flex items-start gap-3 group", className)}>
+    <div className={cn("flex items-center gap-3 group", className)}>
       <button
         onClick={handleToggle}
         className={cn(
-          "flex items-center justify-center w-5 h-5 rounded border-2 transition-all duration-200 ease-out mt-0.5 shrink-0",
+          "flex items-center justify-center w-5 h-5 rounded border-2 transition-all duration-200 ease-out shrink-0",
           "focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
           "hover:scale-110 active:scale-95",
           checked
