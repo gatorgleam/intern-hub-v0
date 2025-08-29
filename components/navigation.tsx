@@ -34,10 +34,10 @@ export function Navigation() {
             <div className="relative">
               <Link
                 href="/"
-                className="text-xl font-bold text-[#5a4324] hover:text-[#2244ae] transition-colors duration-300"
+                className="text-2xl md:text-xl font-bold text-white hover:text-white transition-colors duration-300"
               >
                 <span className="inline-flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-[#2244ae]" />
+                  <Sparkles className="w-6 h-6 md:w-5 md:h-5 text-[#2244ae]" />
                   MyIntern Hub
                 </span>
               </Link>
