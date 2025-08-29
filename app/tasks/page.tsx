@@ -10,17 +10,14 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { tasks, type TaskStatus } from "@/data/tasks"
+import { tasks } from "@/data/tasks"
 import { Search, Filter, X } from "lucide-react"
-import { cn } from "@/lib/utils"
 
-const statusOptions: TaskStatus[] = ["Not Started", "Blocked", "Done"]
 const categoryOptions = Array.from(new Set(tasks.map((task) => task.category).filter(Boolean))) as string[]
 const weekOptions = Array.from(new Set(tasks.map((task) => task.week).filter(Boolean))).sort() as number[]
 
 export default function TasksPage() {
   const [searchQuery, setSearchQuery] = useState("")
-  const [selectedStatus, setSelectedStatus] = useState<TaskStatus | "All">("All")
   const [selectedCategory, setSelectedCategory] = useState<string | "All">("All")
   const [selectedWeek, setSelectedWeek] = useState<number | "All">("All")
   const [showFilters, setShowFilters] = useState(false)
@@ -33,28 +30,23 @@ export default function TasksPage() {
         task.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
         task.goal?.toLowerCase().includes(searchQuery.toLowerCase())
 
-      // Status filter
-      const matchesStatus = selectedStatus === "All" || task.status === selectedStatus
-
       // Category filter
       const matchesCategory = selectedCategory === "All" || task.category === selectedCategory
 
       // Week filter
       const matchesWeek = selectedWeek === "All" || task.week === selectedWeek
 
-      return matchesSearch && matchesStatus && matchesCategory && matchesWeek
+      return matchesSearch && matchesCategory && matchesWeek
     })
-  }, [searchQuery, selectedStatus, selectedCategory, selectedWeek])
+  }, [searchQuery, selectedCategory, selectedWeek])
 
   const clearFilters = () => {
     setSearchQuery("")
-    setSelectedStatus("All")
     setSelectedCategory("All")
     setSelectedWeek("All")
   }
 
-  const hasActiveFilters =
-    searchQuery !== "" || selectedStatus !== "All" || selectedCategory !== "All" || selectedWeek !== "All"
+  const hasActiveFilters = searchQuery !== "" || selectedCategory !== "All" || selectedWeek !== "All"
 
   const breadcrumbItems = [{ label: "Dashboard", href: "/" }, { label: "Tasks" }]
 
@@ -65,7 +57,7 @@ export default function TasksPage() {
       <HeroSection
         title="Your Tasks"
         subtitle="Stay Organized & Productive"
-        description="Track your assignments, manage your work, and achieve your internship goals."
+        description="Access your assignments, get directions, and find all the resources you need to succeed."
       />
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -93,10 +85,7 @@ export default function TasksPage() {
                   Filters
                   {hasActiveFilters && (
                     <Badge variant="secondary" className="text-xs px-1.5 py-0.5 h-auto">
-                      {
-                        [selectedStatus !== "All", selectedCategory !== "All", selectedWeek !== "All"].filter(Boolean)
-                          .length
-                      }
+                      {[selectedCategory !== "All", selectedWeek !== "All"].filter(Boolean).length}
                     </Badge>
                   )}
                 </Button>
@@ -111,25 +100,7 @@ export default function TasksPage() {
 
               {/* Filter Options */}
               {showFilters && (
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t">
-                  {/* Status Filter */}
-                  <div>
-                    <label className="text-sm font-medium mb-2 block">Status</label>
-                    <div className="flex flex-wrap gap-2">
-                      {["All", ...statusOptions].map((status) => (
-                        <Button
-                          key={status}
-                          variant={selectedStatus === status ? "default" : "outline"}
-                          size="sm"
-                          onClick={() => setSelectedStatus(status as TaskStatus | "All")}
-                          className="text-xs h-7"
-                        >
-                          {status}
-                        </Button>
-                      ))}
-                    </div>
-                  </div>
-
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t">
                   {/* Category Filter */}
                   <div>
                     <label className="text-sm font-medium mb-2 block">Category</label>
@@ -182,27 +153,6 @@ export default function TasksPage() {
                 Filtered
               </Badge>
             )}
-          </div>
-
-          {/* Quick Status Stats */}
-          <div className="hidden md:flex items-center gap-4 text-xs text-muted-foreground">
-            {statusOptions.map((status) => {
-              const count = filteredTasks.filter((task) => task.status === status).length
-              return (
-                <div key={status} className="flex items-center gap-1">
-                  <div
-                    className={cn("w-2 h-2 rounded-full", {
-                      "bg-muted-foreground": status === "Not Started",
-                      "bg-destructive": status === "Blocked",
-                      "bg-primary": status === "Done",
-                    })}
-                  />
-                  <span>
-                    {count} {status}
-                  </span>
-                </div>
-              )
-            })}
           </div>
         </div>
 

@@ -1,9 +1,8 @@
 "use client"
 
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { ExternalLink, Zap, Target, Users, CheckCircle } from "lucide-react"
+import { ExternalLink, Users, CheckCircle, Target, Zap } from "lucide-react"
 import type { Task } from "@/data/tasks"
 import { cn } from "@/lib/utils"
 import { motion } from "framer-motion"
@@ -15,23 +14,8 @@ interface TaskCardProps {
   index?: number
 }
 
-const statusColors = {
-  "Not Started": "outline",
-  "In Progress": "secondary",
-  Blocked: "destructive",
-  Done: "default",
-} as const
-
-const statusIcons = {
-  "Not Started": Target,
-  "In Progress": Zap,
-  Blocked: ExternalLink,
-  Done: CheckCircle,
-}
-
 export function TaskCard({ task, className, index = 0 }: TaskCardProps) {
   const [isHovered, setIsHovered] = useState(false)
-  const StatusIcon = statusIcons[task.status]
 
   return (
     <motion.div
@@ -100,29 +84,6 @@ export function TaskCard({ task, className, index = 0 }: TaskCardProps) {
               <CardTitle className="text-lg leading-tight text-balance bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text">
                 {task.title}
               </CardTitle>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{
-                duration: 0.4,
-                delay: index * 0.1 + 0.3,
-                type: "spring",
-                stiffness: 200,
-              }}
-              whileHover={{ scale: 1.1, rotate: 5 }}
-            >
-              <Badge
-                variant={statusColors[task.status]}
-                className={cn(
-                  "shrink-0 transition-all duration-300 ease-out flex items-center gap-1",
-                  task.status === "Done" && "animate-pulse-glow",
-                  "hover:shadow-lg",
-                )}
-              >
-                <StatusIcon className="w-3 h-3" />
-                {task.status}
-              </Badge>
             </motion.div>
           </div>
           {task.goal && (

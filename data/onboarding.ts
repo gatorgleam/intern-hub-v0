@@ -1,7 +1,5 @@
 import { LINKS } from "./tasks"
 
-export type OnboardingStatus = "Not Started" | "In Progress" | "Done"
-
 export type OnboardingStep = {
   id: string
   section: "Getting Access" | "Tools & Links" | "Week 1 Tasks" | "How to Submit Work"
@@ -9,7 +7,6 @@ export type OnboardingStep = {
   summary: string
   checklist: string[]
   ctas?: { label: string; href: string }[]
-  status?: OnboardingStatus
   note?: string
 }
 
@@ -27,7 +24,6 @@ export const onboarding: OnboardingStep[] = [
     ],
     ctas: [{ label: "Join Slack", href: LINKS.slackInvite }],
     note: "Use your PERSONAL email to create the Slack account.",
-    status: "Not Started",
   },
   {
     id: "access-drive",
@@ -40,7 +36,6 @@ export const onboarding: OnboardingStep[] = [
       "Confirm you can upload a test doc",
     ],
     ctas: [{ label: "Open Drive", href: LINKS.drive }],
-    status: "Not Started",
   },
   {
     id: "access-postbridge",
@@ -49,7 +44,6 @@ export const onboarding: OnboardingStep[] = [
     summary: "Confirm your Post-Bridge login and access the create page.",
     checklist: ["Open the create dashboard", "Confirm you can schedule a draft"],
     ctas: [{ label: "Open Post-Bridge", href: LINKS.postBridge }],
-    status: "Not Started",
   },
   {
     id: "tools-style",
@@ -62,7 +56,6 @@ export const onboarding: OnboardingStep[] = [
       "Bookmark the guide for quick reference",
     ],
     ctas: [{ label: "View Canva Style Guide", href: LINKS.canvaStyleGuide }],
-    status: "Not Started",
   },
   {
     id: "week1-tasks",
@@ -81,7 +74,6 @@ export const onboarding: OnboardingStep[] = [
       { label: "Go to Tasks", href: "/tasks" },
       { label: "Join Slack", href: LINKS.slackInvite },
     ],
-    status: "Not Started",
   },
   {
     id: "submit-work",
@@ -99,6 +91,5 @@ export const onboarding: OnboardingStep[] = [
       { label: "Open Post-Bridge", href: LINKS.postBridge },
       { label: "Join Slack", href: LINKS.slackInvite },
     ],
-    status: "Not Started",
   },
 ]

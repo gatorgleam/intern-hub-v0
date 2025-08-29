@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import { onboarding, type OnboardingStep } from "@/data/onboarding"
 import { tasks } from "@/data/tasks"
-import { Clock, CheckCircle, AlertCircle } from "lucide-react"
+import { Clock, AlertCircle } from "lucide-react"
 
 export default function OnboardingPage() {
   const [completedSteps, setCompletedSteps] = useState<Set<string>>(new Set())
@@ -42,7 +42,6 @@ export default function OnboardingPage() {
 
   // Get Week 1 tasks for the at-a-glance panel
   const week1Tasks = tasks.filter((task) => task.week === 1)
-  const completedTasksCount = week1Tasks.filter((task) => task.status === "Done").length
 
   const breadcrumbItems = [{ label: "Dashboard", href: "/" }, { label: "Onboarding" }]
 
@@ -87,10 +86,8 @@ export default function OnboardingPage() {
                 <div className="text-sm text-muted-foreground">Onboarding Steps Complete</div>
               </div>
               <div className="text-center p-4 bg-background/50 rounded-xl">
-                <div className="text-2xl font-bold text-secondary mb-1">
-                  {completedTasksCount}/{week1Tasks.length}
-                </div>
-                <div className="text-sm text-muted-foreground">Week 1 Tasks Done</div>
+                <div className="text-2xl font-bold text-secondary mb-1">{week1Tasks.length}</div>
+                <div className="text-sm text-muted-foreground">Week 1 Tasks Available</div>
               </div>
             </div>
           </CardContent>
@@ -132,7 +129,7 @@ export default function OnboardingPage() {
           <Card className="bg-gradient-to-r from-secondary/5 to-accent/5 border-secondary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <CheckCircle className="w-5 h-5 text-secondary" />
+                <Clock className="w-5 h-5 text-secondary" />
                 Ready to Start Working?
               </CardTitle>
             </CardHeader>
@@ -145,9 +142,6 @@ export default function OnboardingPage() {
               <div className="space-y-2 mb-4">
                 {week1Tasks.map((task) => (
                   <div key={task.id} className="flex items-center gap-3 p-3 bg-background/50 rounded-lg">
-                    <Badge variant={task.status === "Done" ? "default" : "outline"} className="text-xs shrink-0">
-                      {task.status}
-                    </Badge>
                     <span className="text-sm font-medium text-balance">{task.title}</span>
                   </div>
                 ))}

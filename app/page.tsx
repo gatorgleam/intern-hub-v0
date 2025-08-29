@@ -5,7 +5,6 @@ import { HeroSection } from "@/components/hero-section"
 import { PageHeader } from "@/components/page-header"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
 import { BookOpen, CheckSquare, TrendingUp, Sparkles, Zap, Target } from "lucide-react"
 import { tasks } from "@/data/tasks"
 import Link from "next/link"
@@ -15,8 +14,6 @@ import { useEffect, useState } from "react"
 export default function DashboardPage() {
   const [mounted, setMounted] = useState(false)
   const week1Tasks = tasks.filter((task) => task.week === 1)
-  const completedTasks = week1Tasks.filter((task) => task.status === "Done")
-  const activeTasks = week1Tasks.filter((task) => task.status === "Not Started" || task.status === "Blocked")
 
   useEffect(() => {
     setMounted(true)
@@ -75,8 +72,8 @@ export default function DashboardPage() {
           {[
             {
               icon: TrendingUp,
-              title: "Tasks Complete",
-              value: `${completedTasks.length}/${week1Tasks.length}`,
+              title: "Total Tasks",
+              value: week1Tasks.length,
               subtitle: "Week 1 Tasks",
               color: "text-primary",
               bgColor: "bg-primary/10",
@@ -84,8 +81,8 @@ export default function DashboardPage() {
             },
             {
               icon: Zap,
-              title: "Active Tasks",
-              value: activeTasks.length,
+              title: "Available Tasks",
+              value: week1Tasks.length,
               subtitle: "Ready to Start",
               color: "text-accent",
               bgColor: "bg-accent/10",
@@ -237,9 +234,6 @@ export default function DashboardPage() {
                         </h3>
                         <p className="text-sm text-muted-foreground text-pretty">{task.goal}</p>
                       </div>
-                      <Badge variant={task.status === "Done" ? "default" : "outline"} className="shrink-0">
-                        {task.status}
-                      </Badge>
                     </div>
                   </CardContent>
                 </Card>

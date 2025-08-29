@@ -4,44 +4,44 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated to use user's blue color palette */
+  /* Updated to remove brown color (#5a4324) and use only blue palette */
   --background: #f0ede4;
-  --foreground: #5a4324;
+  --foreground: #2244ae;
   --card: #f0ede4;
-  --card-foreground: #5a4324;
+  --card-foreground: #2244ae;
   --popover: #f0ede4;
-  --popover-foreground: #5a4324;
+  --popover-foreground: #2244ae;
   --primary: #2244ae;
   --primary-foreground: #f0ede4;
   --secondary: #5886b8;
   --secondary-foreground: #f0ede4;
   --muted: #f0ede4;
-  --muted-foreground: #5a4324;
+  --muted-foreground: #5886b8;
   --accent: #5886b8;
   --accent-foreground: #f0ede4;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: rgba(90, 67, 36, 0.2);
-  --input: rgba(90, 67, 36, 0.1);
+  --border: rgba(34, 68, 174, 0.2);
+  --input: rgba(34, 68, 174, 0.1);
   --ring: #2244ae;
   --chart-1: #2244ae;
   --chart-2: #5886b8;
-  --chart-3: #5a4324;
-  --chart-4: #f0ede4;
-  --chart-5: rgba(34, 68, 174, 0.7);
+  --chart-3: #f0ede4;
+  --chart-4: rgba(34, 68, 174, 0.5);
+  --chart-5: rgba(88, 134, 184, 0.7);
   --radius: 0.625rem;
   --sidebar: #f0ede4;
-  --sidebar-foreground: #5a4324;
+  --sidebar-foreground: #2244ae;
   --sidebar-primary: #2244ae;
   --sidebar-primary-foreground: #f0ede4;
   --sidebar-accent: #5886b8;
   --sidebar-accent-foreground: #f0ede4;
-  --sidebar-border: rgba(90, 67, 36, 0.2);
+  --sidebar-border: rgba(34, 68, 174, 0.2);
   --sidebar-ring: #2244ae;
 }
 
 .dark {
-  /* Updated dark mode colors to complement the blue palette */
+  /* Updated dark mode to use only blue colors, no brown */
   --background: #1a1a1a;
   --foreground: #f0ede4;
   --card: #2a2a2a;
@@ -64,8 +64,8 @@
   --chart-1: #5886b8;
   --chart-2: #2244ae;
   --chart-3: #f0ede4;
-  --chart-4: #5a4324;
-  --chart-5: rgba(88, 134, 184, 0.7);
+  --chart-4: rgba(88, 134, 184, 0.5);
+  --chart-5: rgba(34, 68, 174, 0.7);
   --sidebar: #2a2a2a;
   --sidebar-foreground: #f0ede4;
   --sidebar-primary: #5886b8;

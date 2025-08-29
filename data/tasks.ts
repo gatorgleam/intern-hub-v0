@@ -9,8 +9,6 @@ export const LINKS = {
   socialAffairFB: "https://www.facebook.com/profile.php?id=100084027847229",
 }
 
-export type TaskStatus = "Not Started" | "In Progress" | "Blocked" | "Done"
-
 export type Task = {
   id: string
   title: string
@@ -22,7 +20,6 @@ export type Task = {
   successMetric?: string
   steps?: string[]
   ctas?: { label: string; href: string }[]
-  status: TaskStatus
 }
 
 export const tasks: Task[] = [
@@ -56,7 +53,6 @@ export const tasks: Task[] = [
       { label: "Create in Post-Bridge", href: LINKS.postBridge },
       { label: "View Canva Style Guide", href: LINKS.canvaStyleGuide },
     ],
-    status: "Not Started",
   },
 
   // Task 2
@@ -80,7 +76,6 @@ export const tasks: Task[] = [
       { label: "Open Facebook", href: LINKS.socialAffairFB },
       { label: "Open Drive", href: LINKS.drive },
     ],
-    status: "Not Started",
   },
 
   // Task 3
@@ -108,7 +103,6 @@ export const tasks: Task[] = [
       { label: "Open Drive", href: LINKS.drive },
       { label: "Open Slack", href: LINKS.slackInvite },
     ],
-    status: "Not Started",
   },
 
   // Task 4
@@ -131,6 +125,5 @@ export const tasks: Task[] = [
       { label: "Open Drive", href: LINKS.drive },
       { label: "Open Slack", href: LINKS.slackInvite },
     ],
-    status: "Not Started",
   },
 ]
