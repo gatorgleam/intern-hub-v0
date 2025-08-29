@@ -184,6 +184,33 @@
 
 /* Enhanced animations with senior-level polish and performance optimization */
 @layer utilities {
+  /* Added subtle background animation for all pages */
+  @keyframes backgroundFloat {
+    0%,
+    100% {
+      transform: translateY(0px) translateX(0px);
+    }
+    25% {
+      transform: translateY(-10px) translateX(5px);
+    }
+    50% {
+      transform: translateY(-5px) translateX(-5px);
+    }
+    75% {
+      transform: translateY(-15px) translateX(3px);
+    }
+  }
+
+  @keyframes backgroundPulse {
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 0.6;
+    }
+  }
+
   /* Basic entrance animations */
   @keyframes fadeInUp {
     from {
@@ -207,6 +234,22 @@
     }
   }
 
+  /* Added typewriter animation for hero titles */
+  @keyframes typewriter {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+
+  @keyframes blink {
+    50% {
+      border-color: transparent;
+    }
+  }
+
   /* Simple hover effects */
   .animate-fade-in-up {
     animation: fadeInUp 0.5s ease-out forwards;
@@ -214,6 +257,11 @@
 
   .animate-fade-in-scale {
     animation: fadeInScale 0.4s ease-out forwards;
+  }
+
+  /* Added typewriter animation class */
+  .animate-typewriter {
+    animation: typewriter 2s steps(40, end), blink 1s step-end infinite;
   }
 
   /* Basic hover effects */
@@ -269,5 +317,32 @@
   .dark .glass-morphism {
     background: rgba(42, 42, 42, 0.8);
     border: 1px solid rgba(240, 237, 228, 0.2);
+  }
+
+  /* Added background animation classes */
+  .background-animated {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .background-animated::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 20% 80%, rgba(34, 68, 174, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(88, 134, 184, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(34, 68, 174, 0.05) 0%, transparent 50%);
+    animation: backgroundFloat 20s ease-in-out infinite, backgroundPulse 15s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .dark .background-animated::before {
+    background: radial-gradient(circle at 20% 80%, rgba(88, 134, 184, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(34, 68, 174, 0.06) 0%, transparent 50%),
+      radial-gradient(circle at 40% 40%, rgba(88, 134, 184, 0.04) 0%, transparent 50%);
   }
 }

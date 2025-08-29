@@ -26,7 +26,7 @@ export function HeroSection({ title, subtitle, description, children, gradient =
       </div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance leading-tight animate-slide-up">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 text-balance leading-tight animate-slide-up animate-typewriter overflow-hidden whitespace-nowrap border-r-2 border-primary">
           {title}
         </h1>
 
