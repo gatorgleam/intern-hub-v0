@@ -30,7 +30,7 @@ export default function TasksPage() {
   const breadcrumbItems = [{ label: "Dashboard", href: "/" }, { label: "Tasks" }]
 
   return (
-    <div className="min-h-screen bg-background floating-elements relative overflow-hidden">
+    <div className="min-h-screen bg-background floating-particles relative overflow-hidden">
       <Navigation />
 
       <HeroSection
@@ -42,20 +42,20 @@ export default function TasksPage() {
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Breadcrumbs items={breadcrumbItems} />
 
-        <Card className="mb-8 glass-refined animate-subtle-glow border-0 shadow-lg">
+        <Card className="mb-8 glass-morphism animate-pulse-glow border-0 shadow-lg card-entrance">
           <CardContent className="p-6">
             <div className="relative">
               <Input
                 placeholder="Search weeks..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-4 text-base h-12 glass-refined border-0 focus:ring-2 focus:ring-primary/50 transition-all duration-300"
+                className="pl-4 text-base h-12 glass-morphism border-0 focus:ring-2 focus:ring-primary/50 transition-all duration-300 hover-lift"
               />
             </div>
           </CardContent>
         </Card>
 
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-8 animate-fade-in-up">
           <div className="flex items-center gap-2">
             <span className="text-base text-muted-foreground">
               {filteredWeeks.length} weeks available • {totalTasks} total tasks
@@ -67,7 +67,16 @@ export default function TasksPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-children">
             {filteredWeeks.map((week, index) => (
               <Link key={week.id} href={`/tasks/${week.id}`}>
-                <Card className="h-full hover-gentle glass-refined border-0 shadow-lg cursor-pointer flex flex-col relative overflow-hidden group">
+                <Card className="h-full hover-magnetic glass-morphism border-0 shadow-lg cursor-pointer flex flex-col relative overflow-hidden group animate-morph-border card-entrance">
+                  <div
+                    className="absolute top-4 right-4 w-1.5 h-1.5 bg-primary/30 rounded-full animate-gentle-float"
+                    style={{ animationDelay: `${index * 0.2}s` }}
+                  />
+                  <div
+                    className="absolute bottom-6 left-6 w-1 h-1 bg-secondary/40 rounded-full animate-gentle-float"
+                    style={{ animationDelay: `${index * 0.3}s` }}
+                  />
+
                   <CardHeader className="pb-4 flex-grow">
                     <CardTitle className="text-xl font-semibold text-primary mb-3 group-hover:animate-text-shimmer transition-all duration-500">
                       {week.title}
@@ -78,14 +87,14 @@ export default function TasksPage() {
                     <div className="flex items-center justify-between gap-4">
                       <Badge
                         variant="secondary"
-                        className="text-base px-4 py-2 font-medium transition-all duration-300"
+                        className="text-base px-4 py-2 font-medium transition-all duration-300 hover-scale"
                       >
                         {week.tasks.length} tasks
                       </Badge>
                       <Button
                         variant="outline"
                         size="lg"
-                        className="text-primary hover:text-primary-foreground text-base font-semibold min-w-[140px] h-12 flex items-center justify-center gap-2 bg-transparent hover-gentle transition-all duration-300"
+                        className="text-primary hover:text-primary-foreground text-base font-semibold min-w-[140px] h-12 flex items-center justify-center gap-2 bg-transparent hover-lift btn-animate transition-all duration-300"
                       >
                         <span>View Tasks</span>
                         <span className="transition-transform group-hover:translate-x-1">→</span>
@@ -97,7 +106,7 @@ export default function TasksPage() {
             ))}
           </div>
         ) : (
-          <div className="glass-refined rounded-lg p-8">
+          <div className="glass-morphism rounded-lg p-8 animate-fade-in-scale">
             <EmptyState
               title={searchQuery ? "No weeks match your search" : "No weeks found"}
               description={
@@ -110,7 +119,7 @@ export default function TasksPage() {
                 <Button
                   variant="outline"
                   onClick={() => setSearchQuery("")}
-                  className="mt-4 hover-gentle h-10 min-w-[120px] flex items-center justify-center font-semibold"
+                  className="mt-4 hover-lift btn-animate h-10 min-w-[120px] flex items-center justify-center font-semibold"
                 >
                   Clear search
                 </Button>

@@ -34,7 +34,7 @@ export default function DashboardPage() {
   if (!mounted) return null
 
   return (
-    <div className="min-h-screen bg-background floating-elements relative overflow-hidden">
+    <div className="min-h-screen bg-background floating-particles relative overflow-hidden">
       <Navigation />
 
       <HeroSection
@@ -43,39 +43,39 @@ export default function DashboardPage() {
         description="Access resources, manage your internship journey, and get started with your assignments all in one place."
       />
 
-      <main className="max-w-6xl mx-auto container-padding stagger-children">
+      <main className="max-w-6xl mx-auto container-padding">
         <div className="relative my-8">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gradient-to-r from-transparent via-primary/30 to-transparent animate-liquid-glow" />
+            <div className="w-full border-t border-primary/20 animate-pulse-glow" />
           </div>
           <div className="relative flex justify-center">
-            <div className="bg-background px-6 animate-morphing-float">
-              <div className="w-3 h-3 bg-primary/50 rounded-full" />
+            <div className="bg-background px-6 animate-gentle-float">
+              <div className="w-3 h-3 bg-primary/50 rounded-full animate-pulse-glow" />
             </div>
           </div>
         </div>
 
         {/* Quick Actions */}
         <section className="mb-12">
-          <h2 className="text-2xl font-heading font-bold animate-text-shimmer mb-8">Quick Actions</h2>
+          <h2 className="text-2xl font-bold animate-text-shimmer mb-8">Quick Actions</h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 stagger-children">
             {quickActions.map((action, index) => (
               <Card
                 key={action.title}
-                className="hover-3d-lift glass-advanced border-0 shadow-sm group cursor-pointer flex flex-col h-full relative overflow-hidden"
+                className="hover-magnetic glass-morphism border-0 shadow-lg group cursor-pointer flex flex-col h-full relative overflow-hidden animate-morph-border"
               >
                 <div
-                  className="absolute top-4 left-4 w-1 h-1 bg-secondary/40 rounded-full animate-particle-float"
+                  className="absolute top-4 left-4 w-1 h-1 bg-secondary/40 rounded-full animate-gentle-float"
                   style={{ animationDelay: `${index * 0.5}s` }}
                 />
                 <div
-                  className="absolute bottom-4 right-4 w-1.5 h-1.5 bg-primary/30 rounded-full animate-particle-float"
+                  className="absolute bottom-4 right-4 w-1.5 h-1.5 bg-primary/30 rounded-full animate-gentle-float"
                   style={{ animationDelay: `${index * 0.3}s` }}
                 />
 
                 <CardHeader className="flex-shrink-0">
-                  <CardTitle className="font-heading text-lg group-hover:animate-text-shimmer transition-all duration-300">
+                  <CardTitle className="text-lg group-hover:animate-text-shimmer transition-all duration-300">
                     {action.title}
                   </CardTitle>
                 </CardHeader>
@@ -84,7 +84,7 @@ export default function DashboardPage() {
                   <Button
                     variant={action.variant}
                     asChild
-                    className="w-full text-lg font-semibold h-14 mt-auto pulse-ring hover-magnetism min-w-full flex items-center justify-center"
+                    className="w-full text-lg font-semibold h-14 mt-auto btn-animate hover-lift min-w-full flex items-center justify-center"
                   >
                     <Link href={action.href} className="flex items-center justify-center w-full">
                       Get Started
@@ -98,23 +98,23 @@ export default function DashboardPage() {
 
         <div className="relative my-16">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gradient-to-r from-transparent via-secondary/30 to-transparent animate-liquid-glow" />
+            <div className="w-full border-t border-secondary/20 animate-pulse-glow" />
           </div>
           <div className="relative flex justify-center">
-            <div className="bg-background px-6 animate-morphing-float" style={{ animationDelay: "2s" }}>
-              <div className="w-3 h-3 bg-secondary/50 rounded-full" />
+            <div className="bg-background px-6 animate-gentle-float" style={{ animationDelay: "2s" }}>
+              <div className="w-3 h-3 bg-secondary/50 rounded-full animate-pulse-glow" />
             </div>
           </div>
         </div>
 
         <section>
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-heading font-bold animate-text-shimmer">Weekly Tasks</h2>
+            <h2 className="text-2xl font-bold animate-text-shimmer">Weekly Tasks</h2>
             <Button
               variant="outline"
               size="sm"
               asChild
-              className="bg-transparent text-base font-semibold min-w-[140px] h-10 hover-magnetism pulse-ring flex items-center justify-center"
+              className="bg-transparent text-base font-semibold min-w-[140px] h-10 hover-lift btn-animate flex items-center justify-center"
             >
               <Link href="/tasks" className="flex items-center justify-center">
                 View All Tasks
@@ -122,14 +122,14 @@ export default function DashboardPage() {
             </Button>
           </div>
 
-          <Card className="hover-3d-lift glass-advanced border-0 shadow-sm group cursor-pointer relative overflow-hidden animate-liquid-glow">
-            <div className="absolute top-6 right-6 w-2 h-2 bg-primary/20 rounded-full animate-particle-float" />
+          <Card className="hover-magnetic glass-morphism border-0 shadow-lg group cursor-pointer relative overflow-hidden animate-pulse-glow card-entrance">
+            <div className="absolute top-6 right-6 w-2 h-2 bg-primary/20 rounded-full animate-gentle-float" />
             <div
-              className="absolute bottom-8 left-8 w-1.5 h-1.5 bg-secondary/25 rounded-full animate-particle-float"
+              className="absolute bottom-8 left-8 w-1.5 h-1.5 bg-secondary/25 rounded-full animate-gentle-float"
               style={{ animationDelay: "1s" }}
             />
             <div
-              className="absolute top-1/2 right-12 w-1 h-1 bg-primary/30 rounded-full animate-particle-float"
+              className="absolute top-1/2 right-12 w-1 h-1 bg-primary/30 rounded-full animate-gentle-float"
               style={{ animationDelay: "2s" }}
             />
 
@@ -144,7 +144,7 @@ export default function DashboardPage() {
                 </p>
                 <Button
                   asChild
-                  className="text-lg font-semibold h-14 min-w-[180px] mt-6 pulse-ring hover-magnetism flex items-center justify-center"
+                  className="text-lg font-semibold h-14 min-w-[180px] mt-6 btn-animate hover-magnetic flex items-center justify-center"
                 >
                   <Link href="/tasks" className="flex items-center justify-center gap-2">
                     Go to Tasks

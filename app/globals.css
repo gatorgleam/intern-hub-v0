@@ -218,6 +218,17 @@
     }
   }
 
+  @keyframes slideInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
   /* Simplified floating animation - removed complex morphing */
   @keyframes gentleFloat {
     0%,
@@ -229,14 +240,13 @@
     }
   }
 
-  /* Simplified glow effect - reduced intensity */
-  @keyframes subtleGlow {
+  @keyframes pulseGlow {
     0%,
     100% {
-      box-shadow: 0 0 15px rgba(34, 68, 174, 0.2);
+      box-shadow: 0 0 20px rgba(34, 68, 174, 0.3);
     }
     50% {
-      box-shadow: 0 0 25px rgba(88, 134, 184, 0.3);
+      box-shadow: 0 0 40px rgba(88, 134, 184, 0.5);
     }
   }
 
@@ -249,15 +259,25 @@
     }
   }
 
+  @keyframes morphBorder {
+    0%,
+    100% {
+      border-radius: 12px;
+    }
+    50% {
+      border-radius: 24px;
+    }
+  }
+
   /* Simplified hover effect - removed complex 3D transforms */
-  @keyframes gentleHover {
+  @keyframes magneticHover {
     0% {
       transform: translateY(0px) scale(1);
       box-shadow: 0 4px 20px rgba(34, 68, 174, 0.1);
     }
     100% {
-      transform: translateY(-5px) scale(1.02);
-      box-shadow: 0 15px 40px rgba(34, 68, 174, 0.2);
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 20px 60px rgba(34, 68, 174, 0.25);
     }
   }
 
@@ -272,13 +292,65 @@
     }
   }
 
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes rotateIn {
+    0% {
+      opacity: 0;
+      transform: rotate(-200deg);
+    }
+    100% {
+      opacity: 1;
+      transform: rotate(0deg);
+    }
+  }
+
+  @keyframes cardEntrance {
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
   /* Professional utility classes for refined animations */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  .animate-fade-in-scale {
+    animation: fadeInScale 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  .animate-slide-in-left {
+    animation: slideInLeft 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
   .animate-gentle-float {
     animation: gentleFloat 6s ease-in-out infinite;
   }
 
-  .animate-subtle-glow {
-    animation: subtleGlow 3s ease-in-out infinite;
+  .animate-pulse-glow {
+    animation: pulseGlow 3s ease-in-out infinite;
   }
 
   .animate-text-shimmer {
@@ -290,34 +362,77 @@
     animation: textShimmer 3s ease-in-out infinite;
   }
 
+  .animate-morph-border {
+    animation: morphBorder 4s ease-in-out infinite;
+  }
+
   .animate-slide-up {
     animation: slideInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   }
 
-  .hover-gentle {
+  .animate-bounce-in {
+    animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+  }
+
+  .animate-rotate-in {
+    animation: rotateIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  /* Enhanced hover effects */
+  .hover-magnetic {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .hover-magnetic:hover {
+    animation: magneticHover 0.4s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  }
+
+  .hover-lift {
     transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
-  .hover-gentle:hover {
-    animation: gentleHover 0.3s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+  .hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(34, 68, 174, 0.2);
   }
 
-  /* Simplified floating background elements */
-  .floating-elements::before {
+  .hover-scale {
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  /* Floating background elements with particles */
+  .floating-particles::before,
+  .floating-particles::after {
     content: "";
     position: absolute;
-    width: 150px;
-    height: 150px;
-    background: radial-gradient(circle, rgba(34, 68, 174, 0.05), transparent 70%);
     border-radius: 50%;
-    top: -75px;
-    right: -75px;
-    animation: gentleFloat 8s ease-in-out infinite;
     pointer-events: none;
     z-index: -1;
   }
 
-  /* Simplified staggered animations */
+  .floating-particles::before {
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(34, 68, 174, 0.08), transparent 70%);
+    top: -100px;
+    right: -100px;
+    animation: gentleFloat 8s ease-in-out infinite;
+  }
+
+  .floating-particles::after {
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(88, 134, 184, 0.06), transparent 70%);
+    bottom: -75px;
+    left: -75px;
+    animation: gentleFloat 10s ease-in-out infinite reverse;
+  }
+
+  /* Advanced staggered animations */
   .stagger-children > * {
     opacity: 0;
     animation: slideInUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
@@ -341,42 +456,77 @@
   .stagger-children > *:nth-child(6) {
     animation-delay: 0.6s;
   }
-
-  /* Glass morphism with refined effects */
-  .glass-refined {
-    background: rgba(240, 237, 228, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(240, 237, 228, 0.2);
-    box-shadow: 0 4px 16px rgba(34, 68, 174, 0.1);
+  .stagger-children > *:nth-child(7) {
+    animation-delay: 0.7s;
+  }
+  .stagger-children > *:nth-child(8) {
+    animation-delay: 0.8s;
   }
 
-  .dark .glass-refined {
+  /* Enhanced glass morphism effects */
+  .glass-morphism {
+    background: rgba(240, 237, 228, 0.1);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(240, 237, 228, 0.2);
+    box-shadow: 0 8px 32px rgba(34, 68, 174, 0.1);
+  }
+
+  .dark .glass-morphism {
     background: rgba(42, 42, 42, 0.8);
     border: 1px solid rgba(240, 237, 228, 0.1);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   }
 
-  /* Professional loading states */
+  /* Professional loading and skeleton states */
   .skeleton-shimmer {
     background: linear-gradient(
       90deg,
       rgba(240, 237, 228, 0.1) 25%,
-      rgba(88, 134, 184, 0.1) 50%,
+      rgba(88, 134, 184, 0.2) 50%,
       rgba(240, 237, 228, 0.1) 75%
     );
     background-size: 200% 100%;
     animation: textShimmer 2s ease-in-out infinite;
   }
 
-  /* Scroll-triggered animations */
+  /* Scroll-triggered reveal animations */
   .scroll-reveal {
     opacity: 0;
-    transform: translateY(30px);
-    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    transform: translateY(50px);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
   }
 
   .scroll-reveal.revealed {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Button-specific animations */
+  .btn-animate {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .btn-animate::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-animate:hover::before {
+    left: 100%;
+  }
+
+  /* Card entrance animations */
+  .card-entrance {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    animation: cardEntrance 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
   }
 }
