@@ -14,7 +14,7 @@ import { tasks, type TaskStatus } from "@/data/tasks"
 import { Search, Filter, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 
-const statusOptions: TaskStatus[] = ["Not Started", "In Progress", "Blocked", "Done"]
+const statusOptions: TaskStatus[] = ["Not Started", "Blocked", "Done"]
 const categoryOptions = Array.from(new Set(tasks.map((task) => task.category).filter(Boolean))) as string[]
 const weekOptions = Array.from(new Set(tasks.map((task) => task.week).filter(Boolean))).sort() as number[]
 
@@ -65,7 +65,7 @@ export default function TasksPage() {
       <HeroSection
         title="Your Tasks"
         subtitle="Stay Organized & Productive"
-        description="Track your assignments, manage your work progress, and achieve your internship goals."
+        description="Track your assignments, manage your work, and achieve your internship goals."
       />
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -193,7 +193,6 @@ export default function TasksPage() {
                   <div
                     className={cn("w-2 h-2 rounded-full", {
                       "bg-muted-foreground": status === "Not Started",
-                      "bg-secondary": status === "In Progress",
                       "bg-destructive": status === "Blocked",
                       "bg-primary": status === "Done",
                     })}

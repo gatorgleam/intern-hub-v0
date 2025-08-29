@@ -4,6 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  /* Updated to use user's blue color palette */
   --background: #f0ede4;
   --foreground: #5a4324;
   --card: #f0ede4;
@@ -14,20 +15,20 @@
   --primary-foreground: #f0ede4;
   --secondary: #5886b8;
   --secondary-foreground: #f0ede4;
-  --muted: #e8e4db;
-  --muted-foreground: #8b7355;
+  --muted: #f0ede4;
+  --muted-foreground: #5a4324;
   --accent: #5886b8;
   --accent-foreground: #f0ede4;
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.577 0.245 27.325);
-  --border: #d4cfc4;
-  --input: #d4cfc4;
+  --border: rgba(90, 67, 36, 0.2);
+  --input: rgba(90, 67, 36, 0.1);
   --ring: #2244ae;
   --chart-1: #2244ae;
   --chart-2: #5886b8;
   --chart-3: #5a4324;
-  --chart-4: #8b7355;
-  --chart-5: #d4cfc4;
+  --chart-4: #f0ede4;
+  --chart-5: rgba(34, 68, 174, 0.7);
   --radius: 0.625rem;
   --sidebar: #f0ede4;
   --sidebar-foreground: #5a4324;
@@ -35,48 +36,47 @@
   --sidebar-primary-foreground: #f0ede4;
   --sidebar-accent: #5886b8;
   --sidebar-accent-foreground: #f0ede4;
-  --sidebar-border: #d4cfc4;
+  --sidebar-border: rgba(90, 67, 36, 0.2);
   --sidebar-ring: #2244ae;
 }
 
 .dark {
-  --background: #2a2419;
+  /* Updated dark mode colors to complement the blue palette */
+  --background: #1a1a1a;
   --foreground: #f0ede4;
-  --card: #2a2419;
+  --card: #2a2a2a;
   --card-foreground: #f0ede4;
-  --popover: #2a2419;
+  --popover: #2a2a2a;
   --popover-foreground: #f0ede4;
   --primary: #5886b8;
-  --primary-foreground: #2a2419;
+  --primary-foreground: #1a1a1a;
   --secondary: #2244ae;
   --secondary-foreground: #f0ede4;
-  --muted: #3d3426;
-  --muted-foreground: #a69b85;
-  --accent: #5886b8;
-  --accent-foreground: #2a2419;
+  --muted: #3a3a3a;
+  --muted-foreground: rgba(240, 237, 228, 0.7);
+  --accent: #2244ae;
+  --accent-foreground: #f0ede4;
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
-  --border: #3d3426;
-  --input: #3d3426;
+  --border: rgba(240, 237, 228, 0.2);
+  --input: rgba(240, 237, 228, 0.1);
   --ring: #5886b8;
   --chart-1: #5886b8;
   --chart-2: #2244ae;
-  --chart-3: #8b7355;
-  --chart-4: #a69b85;
-  --chart-5: #3d3426;
-  --sidebar: #2a2419;
+  --chart-3: #f0ede4;
+  --chart-4: #5a4324;
+  --chart-5: rgba(88, 134, 184, 0.7);
+  --sidebar: #2a2a2a;
   --sidebar-foreground: #f0ede4;
   --sidebar-primary: #5886b8;
-  --sidebar-primary-foreground: #2a2419;
+  --sidebar-primary-foreground: #1a1a1a;
   --sidebar-accent: #2244ae;
   --sidebar-accent-foreground: #f0ede4;
-  --sidebar-border: #3d3426;
+  --sidebar-border: rgba(240, 237, 228, 0.2);
   --sidebar-ring: #5886b8;
 }
 
 @theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -122,197 +122,156 @@
   body {
     @apply bg-background text-foreground;
   }
-
-  html {
-    scroll-behavior: smooth;
-  }
-
-  *:focus-visible {
-    outline: 2px solid hsl(var(--ring));
-    outline-offset: 2px;
-  }
 }
 
-/* Added extensive creative animations and effects */
+/* Enhanced animations with senior-level polish and performance optimization */
 @layer utilities {
-  /* Floating animation for hero elements */
-  @keyframes float {
-    0%,
-    100% {
-      transform: translateY(0px) rotate(0deg);
-    }
-    33% {
-      transform: translateY(-10px) rotate(1deg);
-    }
-    66% {
-      transform: translateY(-5px) rotate(-1deg);
-    }
-  }
-
-  /* Pulse glow effect */
-  @keyframes pulseGlow {
-    0%,
-    100% {
-      box-shadow: 0 0 20px rgba(34, 68, 174, 0.3);
-    }
-    50% {
-      box-shadow: 0 0 40px rgba(34, 68, 174, 0.6), 0 0 60px rgba(34, 68, 174, 0.3);
-    }
-  }
-
-  /* Shimmer effect for loading states */
-  @keyframes shimmer {
-    0% {
-      background-position: -200% 0;
-    }
-    100% {
-      background-position: 200% 0;
-    }
-  }
-
-  /* Bounce in animation */
-  @keyframes bounceIn {
-    0% {
-      transform: scale(0.3) translateY(50px);
-      opacity: 0;
-    }
-    50% {
-      transform: scale(1.05) translateY(-10px);
-    }
-    70% {
-      transform: scale(0.9) translateY(0px);
-    }
-    100% {
-      transform: scale(1) translateY(0px);
-      opacity: 1;
-    }
-  }
-
-  /* Slide up with fade */
-  @keyframes slideUpFade {
-    0% {
-      transform: translateY(30px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0);
-      opacity: 1;
-    }
-  }
-
-  /* Rotate and scale */
-  @keyframes rotateScale {
-    0% {
-      transform: rotate(0deg) scale(1);
-    }
-    50% {
-      transform: rotate(180deg) scale(1.1);
-    }
-    100% {
-      transform: rotate(360deg) scale(1);
-    }
-  }
-
-  /* Typewriter effect */
-  @keyframes typewriter {
+  /* Sophisticated entrance animations */
+  @keyframes fadeInUp {
     from {
-      width: 0;
+      opacity: 0;
+      transform: translateY(30px);
     }
     to {
-      width: 100%;
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
-  /* Gradient shift */
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Sophisticated hover effects */
+  @keyframes gentleFloat {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-4px);
+    }
+  }
+
+  @keyframes subtleGlow {
+    0%,
+    100% {
+      box-shadow: 0 4px 20px rgba(5, 150, 105, 0.1);
+    }
+    50% {
+      box-shadow: 0 8px 40px rgba(5, 150, 105, 0.2);
+    }
+  }
+
   @keyframes gradientShift {
-    0% {
+    0%,
+    100% {
       background-position: 0% 50%;
     }
     50% {
       background-position: 100% 50%;
     }
-    100% {
-      background-position: 0% 50%;
-    }
   }
 
-  /* Morphing border */
-  @keyframes morphBorder {
-    0%,
-    100% {
-      border-radius: 0.625rem;
-    }
-    25% {
-      border-radius: 2rem 0.625rem 2rem 0.625rem;
+  /* Professional micro-interactions */
+  @keyframes buttonPress {
+    0% {
+      transform: scale(1);
     }
     50% {
-      border-radius: 2rem;
+      transform: scale(0.98);
     }
-    75% {
-      border-radius: 0.625rem 2rem 0.625rem 2rem;
+    100% {
+      transform: scale(1);
     }
   }
 
-  /* Utility classes */
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
+  @keyframes cardLift {
+    from {
+      transform: translateY(0) scale(1);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+    to {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
   }
-  .animate-pulse-glow {
-    animation: pulseGlow 2s ease-in-out infinite;
+
+  /* Utility classes for senior UI */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
-  .animate-shimmer {
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
+
+  .animate-fade-in-scale {
+    animation: fadeInScale 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
-  .animate-bounce-in {
-    animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  .animate-slide-in-right {
+    animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
-  .animate-slide-up-fade {
-    animation: slideUpFade 0.5s ease-out;
+
+  .animate-gentle-float {
+    animation: gentleFloat 3s ease-in-out infinite;
   }
-  .animate-rotate-scale {
-    animation: rotateScale 0.8s ease-in-out;
+
+  .animate-subtle-glow {
+    animation: subtleGlow 2s ease-in-out infinite;
   }
-  .animate-typewriter {
-    overflow: hidden;
-    white-space: nowrap;
-    animation: typewriter 2s steps(40, end);
-  }
+
   .animate-gradient-shift {
-    background: linear-gradient(-45deg, #2244ae, #5886b8, #5a4324, #2244ae);
+    background: linear-gradient(-45deg, #059669, #10b981, #34d399, #059669);
     background-size: 400% 400%;
-    animation: gradientShift 3s ease infinite;
-  }
-  .animate-morph-border {
-    animation: morphBorder 4s ease-in-out infinite;
+    animation: gradientShift 4s ease infinite;
   }
 
-  /* Hover effects */
+  /* Professional hover states */
   .hover-lift {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
+
   .hover-lift:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    animation: cardLift 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
-  .hover-tilt {
-    transition: transform 0.3s ease;
-  }
-  .hover-tilt:hover {
-    transform: perspective(1000px) rotateX(10deg) rotateY(10deg) scale(1.05);
+  .hover-scale {
+    transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .hover-glow {
-    transition: all 0.3s ease;
-  }
-  .hover-glow:hover {
-    box-shadow: 0 0 30px rgba(34, 68, 174, 0.4);
+  .hover-scale:hover {
     transform: scale(1.05);
   }
 
-  /* Stagger animation delays */
+  .hover-glow {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 30px rgba(5, 150, 105, 0.3);
+  }
+
+  .button-press:active {
+    animation: buttonPress 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  /* Staggered animation delays */
   .stagger-1 {
     animation-delay: 0.1s;
   }
@@ -329,27 +288,104 @@
     animation-delay: 0.5s;
   }
 
-  /* Background patterns */
-  .bg-dots {
-    background-image: radial-gradient(circle, rgba(34, 68, 174, 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
-
-  .bg-grid {
-    background-image: linear-gradient(rgba(34, 68, 174, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(34, 68, 174, 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
-  }
-
-  /* Glass morphism */
+  /* Glass morphism with sophistication */
   .glass {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
   }
 
-  /* Neon glow text */
-  .text-neon {
-    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, 0 0 20px currentColor;
+  .dark .glass {
+    background: rgba(30, 41, 59, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  /* Professional background patterns */
+  .bg-grid-subtle {
+    background-image: linear-gradient(rgba(5, 150, 105, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(5, 150, 105, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .bg-dots-subtle {
+    background-image: radial-gradient(circle, rgba(5, 150, 105, 0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Typography utilities */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  /* Professional spacing system */
+  .section-padding {
+    @apply py-16 lg:py-24;
+  }
+
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Enhanced focus states */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+
+  /* Added glow effects for titles and section dividers */
+  @keyframes titleGlow {
+    0%,
+    100% {
+      text-shadow: 0 0 10px rgba(88, 134, 184, 0.3), 0 0 20px rgba(88, 134, 184, 0.2), 0 0 30px rgba(88, 134, 184, 0.1);
+    }
+    50% {
+      text-shadow: 0 0 20px rgba(88, 134, 184, 0.5), 0 0 30px rgba(88, 134, 184, 0.3), 0 0 40px rgba(88, 134, 184, 0.2);
+    }
+  }
+
+  @keyframes sectionDividerGlow {
+    0%,
+    100% {
+      box-shadow: 0 0 10px rgba(34, 68, 174, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(34, 68, 174, 0.5);
+    }
+  }
+
+  /* Added title glow utility class */
+  .title-glow {
+    animation: titleGlow 3s ease-in-out infinite;
+  }
+
+  /* Added section divider styles */
+  .section-divider {
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(34, 68, 174, 0.5),
+      rgba(88, 134, 184, 0.7),
+      rgba(34, 68, 174, 0.5),
+      transparent
+    );
+    animation: sectionDividerGlow 2s ease-in-out infinite;
+    margin: 3rem 0;
+  }
+
+  .section-divider-vertical {
+    width: 2px;
+    background: linear-gradient(
+      180deg,
+      transparent,
+      rgba(34, 68, 174, 0.5),
+      rgba(88, 134, 184, 0.7),
+      rgba(34, 68, 174, 0.5),
+      transparent
+    );
+    animation: sectionDividerGlow 2s ease-in-out infinite;
   }
 }

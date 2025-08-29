@@ -73,7 +73,6 @@ export default function OnboardingPage() {
           </div>
         </div>
 
-        {/* At-a-glance Panel */}
         <Card className="mb-8 bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
@@ -82,7 +81,7 @@ export default function OnboardingPage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="text-center p-4 bg-background/50 rounded-xl">
                 <div className="text-2xl font-bold text-primary mb-1">{completedSteps.size}</div>
                 <div className="text-sm text-muted-foreground">Onboarding Steps Complete</div>
@@ -92,12 +91,6 @@ export default function OnboardingPage() {
                   {completedTasksCount}/{week1Tasks.length}
                 </div>
                 <div className="text-sm text-muted-foreground">Week 1 Tasks Done</div>
-              </div>
-              <div className="text-center p-4 bg-background/50 rounded-xl">
-                <div className="text-2xl font-bold text-accent mb-1">
-                  {week1Tasks.filter((task) => task.status === "In Progress").length}
-                </div>
-                <div className="text-sm text-muted-foreground">Tasks In Progress</div>
               </div>
             </div>
           </CardContent>
