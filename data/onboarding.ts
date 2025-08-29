@@ -15,7 +15,7 @@ export const onboarding: OnboardingStep[] = [
     id: "access-slack",
     section: "Getting Access",
     title: "Join Slack (Gator Gleam)",
-    summary: "Create your Slack account and say hello in #general.",
+    summary: "Create your Slack account and say hello in #all-gator-gleam.",
     checklist: [
       "Click the invite link",
       "Create account using your PERSONAL email",
