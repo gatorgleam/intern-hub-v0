@@ -31,7 +31,7 @@ export function Navigation() {
               >
                 <span className="inline-flex items-center gap-2">
                   <span className="text-[#2244ae] text-2xl animate-particle-float">⭐</span>
-                  Gator Gleam Intern Hub
+                  MyIntern Hub
                 </span>
               </Link>
             </div>

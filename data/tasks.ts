@@ -7,6 +7,8 @@ export const LINKS = {
   site1031: "https://1031capitalsolutions.com",
   socialAffairIG: "https://www.instagram.com/socialaffairvenue/",
   socialAffairFB: "https://www.facebook.com/profile.php?id=100084027847229",
+  trelloBoard:
+    "https://trello.com/invite/b/68aa28a72f176a8ee6f622e0/ATTI2954874fa849662a50bc3ab431f3aafdB840BAE0/weekly-intern-tasks-gator-gleam",
 }
 
 export type Task = {
@@ -55,14 +57,16 @@ export const weeks: Week[] = [
           "Design carousels in Canva; script Reels",
           "Write captions with CTAs + hashtags",
           "QA: brand voice, specs, spelling, UTM on links",
-          "Post for approval in Drive",
-          "Schedule in Post-Bridge (note publish links)",
+          "Add completed content to Trello card",
+          "Move to 'Review' column for approval",
+          "Schedule in Post-Bridge once approved (note publish links)",
         ],
         ctas: [
           { label: "Join Slack", href: LINKS.slackInvite },
-          { label: "Open Drive", href: LINKS.drive },
+          { label: "Open Trello Board", href: LINKS.trelloBoard },
           { label: "Create in Post-Bridge", href: LINKS.postBridge },
           { label: "View Canva Style Guide", href: LINKS.canvaStyleGuide },
+          { label: "Get Assets from Drive", href: LINKS.drive },
         ],
       },
       {
@@ -77,12 +81,13 @@ export const weeks: Week[] = [
           "Draft 1-week calendar and concepts",
           "Design carousels and covers",
           "Write/edit captions",
-          "Prepare schedule plan for approval",
+          "Add completed content to Trello card for approval",
         ],
         ctas: [
           { label: "Open Instagram", href: LINKS.socialAffairIG },
           { label: "Open Facebook", href: LINKS.socialAffairFB },
-          { label: "Open Drive", href: LINKS.drive },
+          { label: "Open Trello Board", href: LINKS.trelloBoard },
+          { label: "Get Assets from Drive", href: LINKS.drive },
         ],
       },
       {
@@ -92,20 +97,20 @@ export const weeks: Week[] = [
         goal: "Produce polished screenshots for Gator Gleam's portfolio.",
         audience: "Future web/marketing clients.",
         deliverables: ["12–16 annotated screenshots (desktop + mobile)", "2 device mockups", "1 before/after collage"],
-        successMetric: "Ready-to-publish Drive folder",
+        successMetric: "Approved screenshots ready for Post-Bridge scheduling",
         steps: [
           "Make shot list (hero, nav, key sections, footer, forms)",
           "Capture desktop @ 1440px + mobile @ 390px",
           "Clean up (crop/alignment), add subtle annotations",
           "Place top 2 shots in device mockups",
           "Export PNGs; naming: YYYYMMDD_1031CS_section_v01",
-          "Upload to Drive; attach folder link",
+          "Add completed screenshots to Trello card",
           'Add "Portfolio notes" (what you improved + results)',
           "Share 1 image in #content on Slack",
         ],
         ctas: [
           { label: "Open 1031 Capital Solutions", href: LINKS.site1031 },
-          { label: "Open Drive", href: LINKS.drive },
+          { label: "Open Trello Board", href: LINKS.trelloBoard },
           { label: "Open Slack", href: LINKS.slackInvite },
         ],
       },
@@ -122,9 +127,10 @@ export const weeks: Week[] = [
           "Find websites that need a revamp",
           "Create a list of companies (website, phone, email)",
           "Draft cold emails to each company in a Google document",
+          "Add completed research to Trello card for review",
         ],
         ctas: [
-          { label: "Open Drive", href: LINKS.drive },
+          { label: "Open Trello Board", href: LINKS.trelloBoard },
           { label: "Open Slack", href: LINKS.slackInvite },
         ],
       },
@@ -160,9 +166,10 @@ export const weeks: Week[] = [
         ],
         ctas: [
           { label: "Join Slack", href: LINKS.slackInvite },
-          { label: "Open Drive", href: LINKS.drive },
+          { label: "Open Trello Board", href: LINKS.trelloBoard },
           { label: "Create in Post-Bridge", href: LINKS.postBridge },
           { label: "View Canva Style Guide", href: LINKS.canvaStyleGuide },
+          { label: "Get Assets from Drive", href: LINKS.drive },
         ],
       },
       {
@@ -189,7 +196,8 @@ export const weeks: Week[] = [
         ctas: [
           { label: "Open Instagram", href: LINKS.socialAffairIG },
           { label: "Open Facebook", href: LINKS.socialAffairFB },
-          { label: "Open Drive", href: LINKS.drive },
+          { label: "Open Trello Board", href: LINKS.trelloBoard },
+          { label: "Get Assets from Drive", href: LINKS.drive },
         ],
       },
       {
@@ -215,7 +223,7 @@ export const weeks: Week[] = [
           "Present findings in organized document",
         ],
         ctas: [
-          { label: "Open Drive", href: LINKS.drive },
+          { label: "Open Trello Board", href: LINKS.trelloBoard },
           { label: "Join Slack", href: LINKS.slackInvite },
         ],
       },
@@ -240,7 +248,7 @@ export const weeks: Week[] = [
           "Present findings in professional report",
         ],
         ctas: [
-          { label: "Open Drive", href: LINKS.drive },
+          { label: "Open Trello Board", href: LINKS.trelloBoard },
           { label: "Join Slack", href: LINKS.slackInvite },
         ],
       },

@@ -12,12 +12,12 @@ import { notFound } from "next/navigation"
 
 interface WeekPageProps {
   params: {
-    weekId?: string
+    weekId: string
   }
 }
 
 export default function WeekPage({ params }: WeekPageProps) {
-  const week = weeks.find((w) => w.id === params?.weekId)
+  const week = weeks.find((w) => w.id === params.weekId)
 
   if (!week) {
     notFound()

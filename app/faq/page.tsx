@@ -20,9 +20,9 @@ const faqs = [
           "The Canva style guide is linked in your onboarding checklist and resources page. It contains all brand colors, fonts, and design templates you need to follow.",
       },
       {
-        question: "How do I access Google Drive?",
+        question: "How do I access the Trello board?",
         answer:
-          "Click the Drive link in your onboarding or resources page. Create a Week 1 subfolder with your name to organize your work.",
+          "Click the Trello board link in your onboarding checklist. This is where you'll submit all completed work and track your progress through the approval process.",
       },
     ],
   },
@@ -32,7 +32,7 @@ const faqs = [
       {
         question: "How do I know what to work on first?",
         answer:
-          "Start with the onboarding checklist to get access to all tools. Then check your Week 1 tasks - you can work on them in any order, but Social (Gator Gleam) is usually a good starting point.",
+          "Start with the onboarding checklist to get access to all tools including Trello. Then check your Week 1 tasks - you can work on them in any order, but Social (Gator Gleam) is usually a good starting point.",
       },
       {
         question: "What if I get stuck on a task?",
@@ -52,7 +52,7 @@ const faqs = [
       {
         question: "Do I need approval before posting anything?",
         answer:
-          "Yes, absolutely. Never schedule or publish content without explicit approval. Upload drafts to Drive and share in Slack for review first.",
+          "Yes, absolutely. Never schedule or publish content without explicit approval. Add your completed work to Trello cards and move to 'Review' column first.",
       },
       {
         question: "How do I name my files?",
@@ -62,7 +62,7 @@ const faqs = [
       {
         question: "What if my work gets rejected?",
         answer:
-          "Ensure you are using the correct login credentials. If you still can't access it, ask in Slack - the team can help reset your access. Abbyjane@gatorgleamangency.com Password: Glowonline2023!",
+          "Don't worry! Feedback is part of learning. Make the requested changes in your Trello card and move it back to 'Review'. Ask questions if the feedback isn't clear.",
       },
     ],
   },
