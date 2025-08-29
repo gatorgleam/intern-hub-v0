@@ -62,7 +62,7 @@ const faqs = [
       {
         question: "What if my work gets rejected?",
         answer:
-          "Don't worry! Feedback is part of learning. Make the requested changes and resubmit. Ask questions if the feedback isn't clear.",
+          "Ensure you are using the correct login credentials. If you still can't access it, ask in Slack - the team can help reset your access. Abbyjane@gatorgleamangency.com Password: Glowonline2023!",
       },
     ],
   },

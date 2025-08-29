@@ -22,7 +22,7 @@ const resources = [
   },
   {
     title: "Post-Bridge",
-    description: "Schedule and manage social media content across platforms.",
+    description: "Schedule and manage social media content across platforms. Abbyjane@gatorgleamangency.com Password: Glowonline2023!",
     href: LINKS.postBridge,
     icon: "🌐",
     category: "Social Media",

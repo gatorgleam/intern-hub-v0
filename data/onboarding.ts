@@ -32,7 +32,7 @@ export const onboarding: OnboardingStep[] = [
     summary: "Open the shared Drive folder and ensure you can view/upload.",
     checklist: [
       "Open the shared folder",
-      "Create a Week 1 subfolder with your name",
+      "Create a subfolder with your name under the Intern folder. Add each week with each project as subfolders within your name folder.",
       "Confirm you can upload a test doc",
     ],
     ctas: [{ label: "Open Drive", href: LINKS.drive }],
@@ -41,7 +41,7 @@ export const onboarding: OnboardingStep[] = [
     id: "access-postbridge",
     section: "Getting Access",
     title: "Set up Post-Bridge",
-    summary: "Confirm your Post-Bridge login and access the create page.",
+    summary: "Confirm your Post-Bridge login and access the create page. Username: Abbyjane@gatorgleamangency.com Password: Glowonline2023!",
     checklist: ["Open the create dashboard", "Confirm you can schedule a draft"],
     ctas: [{ label: "Open Post-Bridge", href: LINKS.postBridge }],
   },
@@ -52,7 +52,7 @@ export const onboarding: OnboardingStep[] = [
     summary: "Use the brand style guide to keep visuals on-brand.",
     checklist: [
       "Open the Canva style guide",
-      "Skim colors, fonts, layout examples",
+      "Skim colors, fonts, and guidelines",
       "Bookmark the guide for quick reference",
     ],
     ctas: [{ label: "View Canva Style Guide", href: LINKS.canvaStyleGuide }],
