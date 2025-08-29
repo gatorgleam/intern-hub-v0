@@ -139,7 +139,7 @@ export function TaskCard({ task, className, index = 0 }: TaskCardProps) {
                       variant="outline"
                       size="sm"
                       asChild
-                      className="h-8 bg-transparent transition-all duration-300 ease-out hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 hover:scale-105 hover:-translate-y-0.5 group/button"
+                      className="bg-transparent transition-all duration-300 ease-out hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 hover:scale-105 hover:-translate-y-0.5 group/button text-sm font-semibold min-w-[100px]"
                     >
                       <a
                         href={cta.href}

@@ -3,7 +3,6 @@ import { PageHeader } from "@/components/page-header"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, HelpCircle } from "lucide-react"
 import { LINKS } from "@/data/tasks"
 
 const faqs = [
@@ -108,7 +107,7 @@ export default function FAQPage() {
         <Card className="mb-8 bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <HelpCircle className="w-5 h-5 text-primary" />
+              <span className="text-lg">❓</span>
               Need More Help?
             </CardTitle>
           </CardHeader>
@@ -119,7 +118,7 @@ export default function FAQPage() {
             <Button size="sm" asChild>
               <a href={LINKS.slackInvite} target="_blank" rel="noopener noreferrer" className="gap-1.5">
                 Ask in Slack
-                <ExternalLink className="w-3 h-3" />
+                <span className="text-xs">↗</span>
               </a>
             </Button>
           </CardContent>

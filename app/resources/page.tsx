@@ -3,7 +3,6 @@ import { PageHeader } from "@/components/page-header"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Slack, FolderOpen, Palette, Globe } from "lucide-react"
 import { LINKS } from "@/data/tasks"
 
 const resources = [
@@ -11,28 +10,28 @@ const resources = [
     title: "Slack Workspace",
     description: "Join the team communication hub and get help when you need it.",
     href: LINKS.slackInvite,
-    icon: Slack,
+    icon: "💬",
     category: "Communication",
   },
   {
     title: "Google Drive",
     description: "Access shared files, upload your work, and collaborate on documents.",
     href: LINKS.drive,
-    icon: FolderOpen,
+    icon: "📁",
     category: "File Storage",
   },
   {
     title: "Post-Bridge",
     description: "Schedule and manage social media content across platforms.",
     href: LINKS.postBridge,
-    icon: Globe,
+    icon: "🌐",
     category: "Social Media",
   },
   {
     title: "Canva Style Guide",
     description: "Brand guidelines, colors, fonts, and design templates.",
     href: LINKS.canvaStyleGuide,
-    icon: Palette,
+    icon: "🎨",
     category: "Design",
   },
 ]
@@ -78,27 +77,28 @@ export default function ResourcesPage() {
           <h2 className="text-xl font-semibold mb-6">Essential Tools</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {resources.map((resource) => {
-              const Icon = resource.icon
               return (
                 <Card key={resource.title} className="hover:shadow-md transition-all duration-200 ease-out">
                   <CardHeader>
                     <CardTitle className="flex items-center gap-3">
-                      <Icon className="w-5 h-5 text-primary" />
+                      <span className="text-lg">{resource.icon}</span>
                       {resource.title}
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
                     <p className="text-sm text-muted-foreground mb-4">{resource.description}</p>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
-                        {resource.category}
-                      </span>
-                      <Button size="sm" asChild>
-                        <a href={resource.href} target="_blank" rel="noopener noreferrer" className="gap-1.5">
-                          Open
-                          <ExternalLink className="w-3 h-3" />
-                        </a>
-                      </Button>
+                    <div className="flex flex-col gap-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
+                          {resource.category}
+                        </span>
+                        <Button size="sm" asChild>
+                          <a href={resource.href} target="_blank" rel="noopener noreferrer" className="gap-1.5">
+                            Open
+                            <span className="text-xs">↗</span>
+                          </a>
+                        </Button>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
@@ -126,7 +126,7 @@ export default function ResourcesPage() {
                       <Button variant="outline" size="sm" asChild>
                         <a href={resource.href} target="_blank" rel="noopener noreferrer" className="gap-1.5">
                           Visit
-                          <ExternalLink className="w-3 h-3" />
+                          <span className="text-xs">↗</span>
                         </a>
                       </Button>
                     </div>

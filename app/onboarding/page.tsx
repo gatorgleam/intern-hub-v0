@@ -9,7 +9,6 @@ import { Badge } from "@/components/ui/badge"
 import { Breadcrumbs } from "@/components/breadcrumbs"
 import { onboarding, type OnboardingStep } from "@/data/onboarding"
 import { tasks } from "@/data/tasks"
-import { Clock, AlertCircle } from "lucide-react"
 
 export default function OnboardingPage() {
   const [completedSteps, setCompletedSteps] = useState<Set<string>>(new Set())
@@ -61,7 +60,7 @@ export default function OnboardingPage() {
         {/* Important Note */}
         <div className="mb-8 p-4 bg-accent/50 border border-accent rounded-2xl">
           <div className="flex items-start gap-3">
-            <AlertCircle className="w-5 h-5 text-accent-foreground mt-0.5 shrink-0" />
+            <span className="text-lg mt-0.5 shrink-0">⚠️</span>
             <div>
               <h3 className="font-semibold text-accent-foreground mb-1">Important</h3>
               <p className="text-sm text-accent-foreground">
@@ -75,7 +74,7 @@ export default function OnboardingPage() {
         <Card className="mb-8 bg-gradient-to-r from-primary/5 to-secondary/5 border-primary/20">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
-              <Clock className="w-5 h-5 text-primary" />
+              <span className="text-lg">🕐</span>
               At-a-Glance
             </CardTitle>
           </CardHeader>
@@ -129,7 +128,7 @@ export default function OnboardingPage() {
           <Card className="bg-gradient-to-r from-secondary/5 to-accent/5 border-secondary/20">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
-                <Clock className="w-5 h-5 text-secondary" />
+                <span className="text-lg">🕐</span>
                 Ready to Start Working?
               </CardTitle>
             </CardHeader>

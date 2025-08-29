@@ -1,7 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ChecklistItem } from "@/components/checklist-item"
-import { ExternalLink } from "lucide-react"
 import type { OnboardingStep } from "@/data/onboarding"
 import { cn } from "@/lib/utils"
 
@@ -54,7 +53,7 @@ export function OnboardingSection({ step, className }: OnboardingSectionProps) {
                   size="sm"
                   asChild
                   className={cn(
-                    "h-9 transition-all duration-200 ease-out",
+                    "transition-all duration-200 ease-out font-semibold min-w-[120px]",
                     "hover:scale-105 hover:shadow-md active:scale-95",
                     "animate-in slide-in-from-bottom duration-200",
                   )}
@@ -64,10 +63,10 @@ export function OnboardingSection({ step, className }: OnboardingSectionProps) {
                     href={cta.href}
                     target={cta.href.startsWith("/") ? "_self" : "_blank"}
                     rel={cta.href.startsWith("/") ? undefined : "noopener noreferrer"}
-                    className="inline-flex items-center gap-1.5"
+                    className="inline-flex items-center gap-1.5 justify-center"
                   >
                     {cta.label}
-                    {!cta.href.startsWith("/") && <ExternalLink className="w-3 h-3" />}
+                    {!cta.href.startsWith("/") && <span className="text-xs">↗</span>}
                   </a>
                 </Button>
               ))}

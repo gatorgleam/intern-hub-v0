@@ -4,7 +4,6 @@ import { Breadcrumbs } from "@/components/breadcrumbs"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ChecklistItem } from "@/components/checklist-item"
-import { Upload, MessageSquare, Calendar, ExternalLink } from "lucide-react"
 import { LINKS } from "@/data/tasks"
 
 const submissionSteps = [
@@ -19,7 +18,7 @@ const submissionSteps = [
       "Add a brief note about what you created",
     ],
     cta: { label: "Open Drive", href: LINKS.drive },
-    icon: Upload,
+    icon: "📤",
   },
   {
     id: "share-slack",
@@ -32,7 +31,7 @@ const submissionSteps = [
       "Tag relevant team members if needed",
     ],
     cta: { label: "Open Slack", href: LINKS.slackInvite },
-    icon: MessageSquare,
+    icon: "💬",
   },
   {
     id: "schedule-approved",
@@ -45,7 +44,7 @@ const submissionSteps = [
       "Record publish links in your task notes",
     ],
     cta: { label: "Open Post-Bridge", href: LINKS.postBridge },
-    icon: Calendar,
+    icon: "📅",
   },
 ]
 
@@ -76,7 +75,6 @@ export default function SubmissionsPage() {
         {/* Submission Steps */}
         <div className="space-y-8">
           {submissionSteps.map((step, index) => {
-            const Icon = step.icon
             return (
               <Card key={step.id} className="hover:shadow-md transition-all duration-200 ease-out">
                 <CardHeader>
@@ -84,7 +82,7 @@ export default function SubmissionsPage() {
                     <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-primary-foreground text-sm font-bold">
                       {index + 1}
                     </div>
-                    <Icon className="w-5 h-5 text-primary" />
+                    <span className="text-lg">{step.icon}</span>
                     {step.title}
                   </CardTitle>
                   <p className="text-sm text-muted-foreground text-pretty ml-11">{step.description}</p>
@@ -102,7 +100,7 @@ export default function SubmissionsPage() {
                   <Button variant="outline" size="sm" asChild>
                     <a href={step.cta.href} target="_blank" rel="noopener noreferrer" className="gap-1.5">
                       {step.cta.label}
-                      <ExternalLink className="w-3 h-3" />
+                      <span className="text-xs">↗</span>
                     </a>
                   </Button>
                 </CardContent>

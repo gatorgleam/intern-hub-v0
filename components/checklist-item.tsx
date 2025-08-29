@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import { Check } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface ChecklistItemProps {
@@ -47,9 +46,7 @@ export function ChecklistItem({ id, children, defaultChecked = false, onToggle, 
         aria-pressed={checked}
         aria-label={checked ? "Mark as incomplete" : "Mark as complete"}
       >
-        {checked && (
-          <Check className={cn("w-3 h-3 transition-all duration-200 ease-out", "animate-in zoom-in duration-200")} />
-        )}
+        {checked && <span className="text-xs font-bold">✓</span>}
       </button>
       <div
         className={cn("flex-1 transition-all duration-200 ease-out", checked && "text-muted-foreground line-through")}
