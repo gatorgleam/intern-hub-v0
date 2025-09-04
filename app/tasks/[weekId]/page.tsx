@@ -11,13 +11,14 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 
 interface WeekPageProps {
-  params: {
+  params: Promise<{
     weekId: string
-  }
+  }>
 }
 
-export default function WeekPage({ params }: WeekPageProps) {
-  const week = weeks.find((w) => w.id === params.weekId)
+export default async function WeekPage({ params }: WeekPageProps) {
+  const { weekId } = await params
+  const week = weeks.find((w) => w.id === weekId)
 
   if (!week) {
     notFound()

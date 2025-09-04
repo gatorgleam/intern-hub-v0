@@ -1,4 +1,5 @@
-import type * as React from "react"
+import * as React from "react"
+import { Slot } from "@radix-ui/react-slot"
 
 const buttonVariants = {
   variant: {
@@ -18,22 +19,29 @@ const buttonVariants = {
   },
 }
 
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  asChild?: boolean
+  variant?: keyof typeof buttonVariants.variant
+  size?: keyof typeof buttonVariants.size
+}
+
 function Button({
   className = "",
   variant = "default",
   size = "default",
+  asChild = false,
   ...props
-}: React.ComponentProps<"button"> & {
-  variant?: keyof typeof buttonVariants.variant
-  size?: keyof typeof buttonVariants.size
-}) {
+}: ButtonProps) {
   const variantClasses = buttonVariants.variant[variant] || buttonVariants.variant.default
   const sizeClasses = buttonVariants.size[size] || buttonVariants.size.default
 
   const baseClasses =
     "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl text-center font-semibold transition-all duration-300 ease-out disabled:pointer-events-none disabled:opacity-50 hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 text-center min-w-fit relative overflow-hidden group"
 
-  return <button className={`${baseClasses} ${variantClasses} ${sizeClasses} ${className}`} {...props} />
+  const Comp = asChild ? Slot : "button"
+  
+  return <Comp className={`${baseClasses} ${variantClasses} ${sizeClasses} ${className}`} {...props} />
 }
 
 export { Button, buttonVariants }
