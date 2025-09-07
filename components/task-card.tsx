@@ -126,6 +126,31 @@ export function TaskCard({ task, className, index = 0 }: TaskCardProps) {
             </div>
           )}
 
+          {task.trainingVideos && task.trainingVideos.length > 0 && (
+            <div>
+              <h4 className="text-sm font-medium mb-2 flex items-center gap-2">
+                <span className="text-red-500 text-sm">🎥</span>
+                <span>Training Videos</span>
+              </h4>
+              <div className="space-y-2 ml-6">
+                {task.trainingVideos.map((video, videoIndex) => (
+                  <div key={videoIndex} className="group/video">
+                    <a
+                      href={video.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors duration-200 hover:translate-x-1"
+                    >
+                      <span className="text-red-500 transition-all duration-200 hover:scale-125">▶️</span>
+                      <span className="group-hover/video:underline">{video.title}</span>
+                      <ExternalLink className="w-3 h-3 opacity-50 group-hover/video:opacity-100 transition-all duration-200" />
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {task.ctas && task.ctas.length > 0 && (
             <div className="pt-2">
               <div className="flex flex-wrap gap-2">
